@@ -421,7 +421,7 @@
                       android:text="Add usage" />
 
                     <EditText
-                      android:id="@+id/addfileusage"
+                      android:id="@+id/addfileusageedit"
                       android:layout_width="@dimen/widget_margin"
                       android:layout_height="wrap_content"
                       android:layout_weight="70"
@@ -456,11 +456,13 @@
                       android:layout_weight="30"
                       android:text="File usage list" />
 
-                    <ListView
+                    <TextView
+                      style="@style/MediaDetailTextBody"
                       android:id="@+id/fileusagelist"
                       android:layout_width="@dimen/widget_margin"
-                      android:layout_height="wrap_content"
-                      android:layout_weight="70" />
+                      android:layout_height="match_parent"
+                      android:layout_weight="70"
+                      android:text="no usage" />
 
                 </LinearLayout>
 

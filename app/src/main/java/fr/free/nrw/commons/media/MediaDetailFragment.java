@@ -11,6 +11,7 @@ import static fr.free.nrw.commons.description.EditDescriptionConstants.UPDATED_W
 import static fr.free.nrw.commons.description.EditDescriptionConstants.WIKITEXT;
 import static fr.free.nrw.commons.upload.mediaDetails.UploadMediaDetailFragment.LAST_LOCATION;
 import static fr.free.nrw.commons.utils.LangCodeUtils.getLocalizedResources;
+import android.widget.AdapterView;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -29,6 +30,8 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -99,6 +102,7 @@ import java.util.regex.Pattern;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.apache.commons.lang3.StringUtils;
+import org.wikipedia.edit.Edit;
 import org.wikipedia.language.AppLanguageLookUpTable;
 import org.wikipedia.util.DateUtil;
 import timber.log.Timber;
@@ -231,6 +235,12 @@ public class MediaDetailFragment extends CommonsDaggerSupportFragment implements
     ProgressBar progressBarEditCategory;
     @BindView(R.id.description_edit)
     Button editDescription;
+    @BindView(R.id.addfileusageedit)
+    EditText addFileUsageEdit;
+    @BindView(R.id.addusagebutton)
+    Button addUsageButton;
+    @BindView(R.id.fileusagelist)
+    TextView fileUsageList;
 
     private ArrayList<String> categoryNames = new ArrayList<>();
     private String categorySearchQuery;
@@ -500,6 +510,28 @@ public class MediaDetailFragment extends CommonsDaggerSupportFragment implements
         depictsLayout.setVisibility(idAndCaptions.isEmpty() ? GONE : VISIBLE);
         depictEditButton.setVisibility(idAndCaptions.isEmpty() ? GONE : VISIBLE);
         buildDepictionList(idAndCaptions);
+    }
+
+    /**
+     * By clicking on the add usage button, text will be added to the file usage list
+     */
+    @OnClick(R.id.addusagebutton)
+    public void onAddUsageButtonClicked() {
+        String original = fileUsageList.getText().toString();
+        String input = addFileUsageEdit.getText().toString();
+
+        String updateInput;
+
+        if(input == null || input.isEmpty() || input.length() == 0) {
+            updateInput = original;
+        } else if(original.equals("no usage")) {
+            updateInput = input;
+        } else {
+            updateInput = original + "\n\n" + input;
+        }
+
+        fileUsageList.setText(updateInput);
+        addFileUsageEdit.setText("");
     }
 
     /**
