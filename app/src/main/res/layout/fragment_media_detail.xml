@@ -408,6 +408,63 @@
                 </LinearLayout>
 
                 <LinearLayout
+                  style="@style/MediaDetailContainer"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+
+                    <TextView
+                      android:id="@+id/fileusage4"
+                      style="@style/MediaDetailTextLabelGeneric"
+                      android:layout_width="@dimen/widget_margin"
+                      android:layout_height="match_parent"
+                      android:layout_weight="30"
+                      android:text="Add usage" />
+
+                    <EditText
+                      android:id="@+id/addfileusage"
+                      android:layout_width="@dimen/widget_margin"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="70"
+                      android:ems="10"
+                      android:gravity="start|top"
+                      android:hint="Add a link and a title"
+                      android:inputType="textMultiLine"
+                      android:textSize="14sp" />
+
+                    <Button
+                      android:id="@+id/addusagebutton"
+                      android:layout_width="18dp"
+                      android:layout_height="18dp"
+                      android:layout_gravity="end"
+                      android:layout_marginTop="@dimen/standard_gap"
+                      android:layout_marginBottom="@dimen/standard_gap"
+                      android:background="@drawable/ic_baseline_edit_24" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                  style="@style/MediaDetailContainer"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal">
+
+                    <TextView
+                      android:id="@+id/fileusage"
+                      style="@style/MediaDetailTextLabelGeneric"
+                      android:layout_width="@dimen/widget_margin"
+                      android:layout_height="match_parent"
+                      android:layout_weight="30"
+                      android:text="File usage list" />
+
+                    <ListView
+                      android:id="@+id/fileusagelist"
+                      android:layout_width="@dimen/widget_margin"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="70" />
+
+                </LinearLayout>
+
+                <LinearLayout
                   android:id="@+id/nominatedDeletionBanner"
                   android:background="?attr/mediaDetailNominationBackground"
                   android:layout_width="match_parent"
